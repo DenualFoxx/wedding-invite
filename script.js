@@ -240,6 +240,7 @@ loop();
 
 document.addEventListener("DOMContentLoaded", () => {
   const music = document.getElementById("bgMusic");
+music?.load();
   const toggle = document.getElementById("playerToggle");
   const seek = document.getElementById("seek");
   const volume = document.getElementById("volume");
@@ -299,3 +300,4 @@ document.addEventListener("DOMContentLoaded", () => {
 
   setToggleState();
 });
+
