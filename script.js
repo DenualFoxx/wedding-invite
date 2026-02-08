@@ -144,20 +144,40 @@ function saveEntries(arr){
   localStorage.setItem(STORAGE_KEY, JSON.stringify(arr));
 }
 
-$("#rsvpForm").addEventListener("submit", (e) => {
+$("#rsvpForm").addEventListener("submit", async (e) => {
   e.preventDefault();
-  const fd = new FormData(e.currentTarget);
-  const entry = Object.fromEntries(fd.entries());
-  entry.guests = Number(entry.guests || 1);
-  entry.createdAt = new Date().toISOString();
 
-  const all = loadEntries();
-  all.push(entry);
-  saveEntries(all);
+  const form = e.currentTarget;
+  const fd = new FormData(form);
 
-  e.currentTarget.reset();
-  toast("Спасибо! Ответ сохранён (локально).");
+  // Делаем тему письма удобной
+  const name = String(fd.get("name") || "").trim();
+  const attend = String(fd.get("attend") || "");
+  const guests = String(fd.get("guests") || "1");
+
+  const attendText =
+    attend === "yes" ? "Да" :
+    attend === "no" ? "Нет" : "—";
+
+  fd.set("_subject", `RSVP: ${name || "Гость"} (${attendText}, гостей: ${guests})`);
+  fd.set("_format", "plain");
+
+  try {
+    const res = await fetch("https://formspree.io/f/xjgevlnz", {
+      method: "POST",
+      body: fd,
+      headers: { "Accept": "application/json" }
+    });
+
+    if (!res.ok) throw new Error("Send failed");
+
+    form.reset();
+    toast("Спасибо! Анкета отправлена 💌");
+  } catch (err) {
+    toast("Не удалось отправить. Проверь интернет и попробуй ещё раз.");
+  }
 });
+
 
 $("#downloadRSVP").addEventListener("click", () => {
   const data = loadEntries();
