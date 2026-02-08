@@ -237,3 +237,65 @@ function loop(){
   requestAnimationFrame(loop);
 }
 loop();
+
+document.addEventListener("DOMContentLoaded", () => {
+  const music = document.getElementById("bgMusic");
+  const toggle = document.getElementById("playerToggle");
+  const seek = document.getElementById("seek");
+  const volume = document.getElementById("volume");
+  const curTimeEl = document.getElementById("curTime");
+  const durTimeEl = document.getElementById("durTime");
+
+  console.log("[player] init", { music: !!music, toggle: !!toggle });
+
+  if (!music || !toggle) return;
+
+  const fmtTime = (sec) => {
+    if (!isFinite(sec)) return "0:00";
+    const m = Math.floor(sec / 60);
+    const s = Math.floor(sec % 60);
+    return `${m}:${String(s).padStart(2, "0")}`;
+  };
+
+  const setToggleState = () => {
+    toggle.textContent = music.paused ? "▶" : "❚❚";
+  };
+
+  toggle.addEventListener("click", async () => {
+    console.log("[player] click");
+    try {
+      if (music.paused) await music.play();
+      else music.pause();
+      setToggleState();
+    } catch (e) {
+      console.error("[player] play blocked", e);
+      alert("Браузер заблокировал звук. Нажми ещё раз.");
+    }
+  });
+
+  volume?.addEventListener("input", () => {
+    music.volume = Number(volume.value);
+  });
+
+  music.addEventListener("loadedmetadata", () => {
+    if (durTimeEl) durTimeEl.textContent = fmtTime(music.duration);
+    music.volume = Number(volume?.value ?? 0.8);
+    setToggleState();
+  });
+
+  music.addEventListener("timeupdate", () => {
+    if (!music.duration) return;
+    if (seek) seek.value = String((music.currentTime / music.duration) * 100);
+    if (curTimeEl) curTimeEl.textContent = fmtTime(music.currentTime);
+  });
+
+  seek?.addEventListener("input", () => {
+    if (!music.duration) return;
+    music.currentTime = (Number(seek.value) / 100) * music.duration;
+  });
+
+  music.addEventListener("play", setToggleState);
+  music.addEventListener("pause", setToggleState);
+
+  setToggleState();
+});
