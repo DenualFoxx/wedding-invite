@@ -86,26 +86,6 @@
           <span class="mouse"></span>
           <span class="hint">листай вниз</span>
         </div>
-<!-- PLAYER (внизу hero) -->
-<div class="player reveal" id="player">
-  <button class="player__btn" id="playerToggle" aria-label="Воспроизвести/Пауза">
-    ▶
-  </button>
-
-  <div class="player__meta">
-    <div class="player__title">
-      <span class="player__track">Наша песня</span>
-      <span class="player__time"><span id="curTime">0:00</span> / <span id="durTime">0:00</span></span>
-    </div>
-
-    <input class="player__seek" id="seek" type="range" min="0" max="100" value="0" />
-  </div>
-
-  <div class="player__vol">
-    <span class="player__volIcon">🔊</span>
-    <input class="player__volume" id="volume" type="range" min="0" max="1" step="0.01" value="0.8" />
-  </div>
-</div>
 
       </div>
     </section>
@@ -317,11 +297,18 @@
     </footer>
   </main>
 
- <audio id="bgMusic" preload="metadata">
+ <script src="script.js"></script>
+<audio autoplay loop muted id="bgMusic">
   <source src="music.mp3" type="audio/mpeg">
 </audio>
 
-<script src="script.js" defer></script>
+<script>
+  document.addEventListener('click', () => {
+    const music = document.getElementById('bgMusic');
+    music.muted = false;
+    music.play();
+  }, { once: true });
+</script>
 
 
 </body>
