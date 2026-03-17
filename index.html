@@ -1,315 +1,149 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Приглашение на свадьбу — Анна & Даниил</title>
-  <meta name="description" content="Онлайн приглашение на свадьбу. Дата, место, программа, RSVP." />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Daniil & Anna — Wedding Invitation</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#f5f2ef;--paper:#fffdfa;--ink:#181818;--muted:rgba(0,0,0,.52);--line:rgba(0,0,0,.08);--accent:#a2675f;--card:rgba(255,255,255,.78);--shadow:0 30px 80px rgba(0,0,0,.08);}
+    *{box-sizing:border-box} html{scroll-behavior:smooth}
+    body{margin:0;font-family:Inter,sans-serif;color:var(--ink);background:radial-gradient(circle at top, rgba(255,255,255,.94), rgba(238,233,229,.95) 42%, rgba(233,227,223,1) 100%);overflow-x:hidden}
+    .script{font-family:"Cormorant Garamond",serif}
+    .page-pearls,.envelope-pearls{position:fixed; inset:0; pointer-events:none; overflow:hidden; z-index:1}
+    .envelope-pearls{z-index:51}
+    .pearl{position:absolute; border-radius:50%;border:1px solid rgba(215,194,191,.65);background:radial-gradient(circle at 30% 30%, #fff, #ead9d5 60%, #d8c2be);box-shadow:0 6px 18px rgba(157,126,120,.15);opacity:.75;animation:floatPearl 7s ease-in-out infinite}
+    @keyframes floatPearl{0%,100%{transform:translateY(0) translateX(0)}50%{transform:translateY(-10px) translateX(4px)}}
+    .envelope-screen{position:fixed; inset:0; z-index:50;display:flex; align-items:center; justify-content:center;padding:24px;background:radial-gradient(circle at top, rgba(255,255,255,.95), rgba(240,236,232,.95) 45%, rgba(229,223,218,1));transition:opacity .8s ease, transform .8s ease, visibility .8s}
+    .envelope-screen.hidden{opacity:0; visibility:hidden; transform:scale(1.03)}
+    .envelope-wrap{position:relative; width:100%; max-width:380px; text-align:center; z-index:2}
+    .eyebrow{margin-bottom:14px; font-size:17px; text-transform:uppercase; letter-spacing:.45em; color:rgba(0,0,0,.35)}
+    .hero-name{margin:0 0 14px; font-size:68px; line-height:.95; font-style:italic; font-weight:500; color:rgba(0,0,0,.82)}
+    .hint{margin-bottom:34px; font-size:13px; text-transform:uppercase; letter-spacing:.55em; color:rgba(0,0,0,.35)}
+    .envelope-button{background:none; border:0; padding:0; cursor:pointer;perspective:1600px}
+    .envelope{position:relative; width:320px; height:240px; margin:auto;border-radius:32px; background:#fdfcfa;box-shadow:0 30px 80px rgba(0,0,0,.10), inset 0 1px 0 rgba(255,255,255,.65);transition:transform .7s ease}
+    .envelope-button:hover .envelope{transform:scale(1.015)}
+    .top-half{position:absolute; left:0; right:0; top:0; height:50%;border-top-left-radius:32px; border-top-right-radius:32px;background:linear-gradient(180deg,#fff,#f7f3ef)}
+    .flap{position:absolute; left:0; right:0; top:0; height:124px; z-index:20;transform-origin:top center;clip-path:polygon(0 0,100% 0,50% 100%);background:linear-gradient(180deg,#fff,#f2ece8);transition:transform .95s cubic-bezier(.22,1,.36,1), filter .95s ease;transform-style:preserve-3d}
+    .flap::before{content:""; position:absolute; inset:0; opacity:.72;background:linear-gradient(180deg, rgba(255,255,255,.96), rgba(222,212,206,.9))}
+    .flap::after{content:""; position:absolute; left:20%; right:20%; bottom:16px; height:1px;background:rgba(0,0,0,.06); filter:blur(1px)}
+    .envelope-button:hover .flap{transform:rotateX(-145deg) translateY(-14px)}
+    .bottom-half{position:absolute; inset-inline:0; bottom:0; height:145px;border-bottom-left-radius:32px; border-bottom-right-radius:32px;background:linear-gradient(180deg,#fbfaf8,#efebe8)}
+    .left-fold,.right-fold{position:absolute; bottom:0; height:148px; width:50%;background:linear-gradient(135deg,#f1ebe7,#faf7f3)}
+    .left-fold{left:0; border-bottom-left-radius:32px; clip-path:polygon(0 0,100% 100%,0 100%)}
+    .right-fold{right:0; border-bottom-right-radius:32px;clip-path:polygon(100% 0,100% 100%,0 100%);background:linear-gradient(225deg,#f1ebe7,#faf7f3)}
+    .letter{position:absolute; left:50%; top:50%; z-index:10;width:240px; height:80px;transform:translate(-50%,-42%);border-radius:20px; border:1px solid rgba(0,0,0,.05);background:rgba(255,255,255,.92);box-shadow:0 22px 55px rgba(0,0,0,.12);display:flex; align-items:center; justify-content:center;transition:transform .95s cubic-bezier(.22,1,.36,1);animation:letterFloat 2.8s ease-in-out infinite}
+    @keyframes letterFloat{0%,100%{transform:translate(-50%,-42%) translateY(8px)}50%{transform:translate(-50%,-42%) translateY(-2px)}}
+    .envelope-button:hover .letter{transform:translate(-50%,-42%) translateY(-34px) scale(1.015) rotateX(3deg)}
+    .letter span{font-size:42px; font-style:italic; color:rgba(0,0,0,.7)}
+    .seal{position:absolute; left:50%; top:56%; z-index:30;width:80px; height:80px; transform:translate(-50%,-50%);border-radius:50%; border:1px solid rgba(183,143,131,.30);background:radial-gradient(circle at 30% 30%, #d9b9ac, #a2675f 70%, #7f4c46);box-shadow:0 15px 35px rgba(162,103,95,.30);display:flex; align-items:center; justify-content:center;color:#fff; letter-spacing:.35em; font-size:20px;transition:transform .45s ease}
+    .envelope-button:hover .seal{transform:translate(-50%,-50%) scale(1.06) rotate(-6deg)}
+    .down{margin-top:26px; color:rgba(0,0,0,.3); font-size:28px; animation:bounce 1.8s infinite}
+    @keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(10px)}}
+    header{position:relative; min-height:100vh; display:flex; align-items:center; justify-content:center; isolation:isolate}
+    .hero-bg{position:absolute; inset:0;background-image:linear-gradient(180deg, rgba(255,255,255,.50), rgba(255,255,255,.18), rgba(245,242,239,1)),url('https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1400&q=80');background-size:cover; background-position:center;filter:grayscale(1)}
+    .hero-bg::before{content:""; position:absolute; inset:0; background:rgba(255,255,255,.18)}
+    .hero-bg::after{content:""; position:absolute; inset:0;background:radial-gradient(circle at center, rgba(255,255,255,.24), rgba(255,255,255,.42) 55%, rgba(255,255,255,.58))}
+    .hero-box{position:relative; z-index:2;width:min(92vw, 430px);text-align:center;padding:34px 24px;border-radius:36px;border:1px solid rgba(255,255,255,.38);background:rgba(255,255,255,.34);box-shadow:0 25px 80px rgba(0,0,0,.12);backdrop-filter:blur(14px)}
+    .pill{display:inline-flex; align-items:center; gap:8px;padding:10px 16px; border-radius:999px;border:1px solid rgba(0,0,0,.10); background:rgba(255,255,255,.64);font-size:11px; text-transform:uppercase; letter-spacing:.35em; color:rgba(0,0,0,.52)}
+    .hero-title{margin:18px 0 0; font-size:66px; line-height:.95; font-style:italic; color:#111;text-shadow:0 6px 24px rgba(255,255,255,.35)}
+    .hero-date{margin:20px auto 0; max-width:260px; font-size:15px; text-transform:uppercase; letter-spacing:.45em;color:rgba(0,0,0,.9); text-shadow:0 4px 14px rgba(255,255,255,.35)}
+    .hero-text{margin:28px auto 0; max-width:340px; font-size:18px; line-height:1.8;color:rgba(0,0,0,.88); text-shadow:0 4px 14px rgba(255,255,255,.35)}
+    .hero-actions{margin-top:34px; display:flex; gap:12px; justify-content:center}
+    .btn{display:inline-flex; align-items:center; justify-content:center;min-height:48px; padding:0 22px; border-radius:999px;text-decoration:none; border:1px solid rgba(0,0,0,.1); transition:.25s ease;cursor:pointer; font-family:inherit}
+    .btn-dark{background:#111; color:#fff; letter-spacing:.25em; text-transform:uppercase; font-size:12px}
+    .btn-dark:hover{transform:translateY(-2px)}
+    .btn-icon{width:48px; padding:0; background:rgba(255,255,255,.72); color:rgba(0,0,0,.72)}
+    .music-note{margin-top:14px; font-size:12px; color:rgba(0,0,0,.7)}
+    main{position:relative; z-index:2; padding-bottom:90px}
+    .section,.card{width:min(92vw, 430px);margin:0 auto;padding:18px 0}
+    .glass{border-radius:36px; border:1px solid var(--line); background:var(--card);padding:28px; box-shadow:var(--shadow); backdrop-filter:blur(14px)}
+    .eyebrow2{margin-bottom:12px; text-align:center; font-size:11px; text-transform:uppercase; letter-spacing:.45em; color:rgba(0,0,0,.4)}
+    .title2{margin:0 0 22px; text-align:center; font-size:54px; line-height:.95; font-style:italic; font-weight:500}
+    .text2{text-align:center; font-size:18px; line-height:1.8; color:rgba(0,0,0,.75)}
+    .calendar-grid{display:grid; grid-template-columns:repeat(7,1fr); gap:8px; text-align:center; font-size:14px; color:rgba(0,0,0,.55)}
+    .calendar-grid .day{display:flex; aspect-ratio:1/1; align-items:center; justify-content:center; border-radius:999px}
+    .calendar-grid .active{background:#111; color:#fff; box-shadow:0 14px 26px rgba(0,0,0,.16)}
+    .location-card{background:linear-gradient(rgba(255,255,255,.72), rgba(255,255,255,.72)),url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1400&q=80') center/cover}
+    .timeline{display:grid; gap:14px}
+    .timeline-item{display:flex; align-items:center; gap:16px; border-radius:24px; border:1px solid var(--line);background:rgba(255,255,255,.8); padding:16px}
+    .timeline-icon{width:48px; height:48px; border-radius:50%; background:#111; color:#fff;display:flex; align-items:center; justify-content:center; font-size:18px; flex:0 0 auto}
+    .timeline-time{font-size:12px; text-transform:uppercase; letter-spacing:.2em; color:rgba(0,0,0,.35)}
+    .timeline-title{margin-top:4px; font-size:34px; color:rgba(0,0,0,.82)}
+    .count-wrap{background:linear-gradient(rgba(255,255,255,.70), rgba(255,255,255,.70)),url('https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=1400&q=80') center/cover;border-radius:36px; overflow:hidden; border:1px solid var(--line); box-shadow:var(--shadow)}
+    .count-box{padding:34px 28px; text-align:center}
+    .count-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:10px}
+    .count-item{border-radius:24px; border:1px solid var(--line); background:rgba(255,255,255,.84); padding:18px 8px}
+    .count-value{font-size:34px; color:rgba(0,0,0,.86)}
+    .count-label{margin-top:8px; font-size:11px; text-transform:uppercase; letter-spacing:.25em; color:rgba(0,0,0,.42)}
+    form{display:grid; gap:14px}
+    input,select,textarea{width:100%; border-radius:18px; border:1px solid var(--line); background:#faf8f6;padding:16px 18px; font:inherit; color:#111; outline:none}
+    textarea{min-height:120px; resize:vertical}
+    .thanks{border-radius:24px; border:1px solid var(--line); background:#f8f5f2; padding:26px 18px; text-align:center}
+    footer{padding:18px 0 54px; text-align:center; color:rgba(0,0,0,.42); font-size:13px}
+    @media (max-width:480px){.hero-title,.hero-name{font-size:56px}.title2{font-size:46px}.timeline-title{font-size:28px}.count-grid{gap:8px}.count-value{font-size:28px}.envelope{transform:scale(.94)}.envelope-button:hover .envelope{transform:scale(.96)}}
+  </style>
 </head>
-
 <body>
-  <!-- Preloader -->
-  <div class="preloader" aria-hidden="true">
-    <div class="preloader__ring"></div>
-    <div class="preloader__text">Секунду…</div>
+  <div class="page-pearls" id="pagePearls"></div>
+  <div class="envelope-screen" id="envelopeScreen">
+    <div class="envelope-pearls" id="envelopePearls"></div>
+    <div class="envelope-wrap">
+      <div class="eyebrow">Wedding Invitation</div>
+      <h1 class="hero-name script">Daniil & Anna</h1>
+      <div class="hint">нажмите на конверт</div>
+      <button class="envelope-button" id="openEnvelope" aria-label="Открыть приглашение">
+        <div class="envelope">
+          <div class="top-half"></div><div class="flap"></div><div class="bottom-half"></div>
+          <div class="left-fold"></div><div class="right-fold"></div>
+          <div class="letter"><span class="script">D A</span></div><div class="seal">DA</div>
+        </div>
+      </button>
+      <div class="down">⌄</div>
+    </div>
   </div>
-
-  <!-- Floating particles -->
-  <canvas id="particles" aria-hidden="true"></canvas>
-
-  <header class="nav">
-    <div class="nav__brand">Анна <span class="dot">•</span> Даниил</div>
-    <nav class="nav__links">
-      <a href="#details">Детали</a>
-      <a href="#timeline">Программа</a>
-      <a href="#map">Как добраться</a>
-      <a href="#rsvp" class="btn btn--small">Форма</a>
-    </nav>
-    <button class="nav__burger" aria-label="Меню" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
+  <audio id="bgMusic" src="music.mp3" loop></audio>
+  <header>
+    <div class="hero-bg"></div>
+    <div class="hero-box">
+      <div class="pill">♡ wedding day</div>
+      <h1 class="hero-title script">Daniil & Anna</h1>
+      <div class="hero-date">27 june 2026</div>
+      <div class="hero-text">Мы будем счастливы разделить с вами один из самых важных дней нашей жизни.</div>
+      <div class="hero-actions">
+        <a class="btn btn-dark" href="#details">открыть приглашение</a>
+        <button class="btn btn-icon" id="musicToggle" type="button">♫</button>
+      </div>
+      <div class="music-note" id="musicNote">Музыка включится после открытия конверта</div>
+    </div>
   </header>
+  <main id="details">
+    <section class="section"><div class="glass"><div class="eyebrow2">дорогие гости</div><h2 class="title2 script">Приглашение</h2><div class="text2">С огромной радостью приглашаем вас на нашу свадьбу. Будем счастливы видеть вас рядом в этот особенный день, наполненный любовью, светом и самыми теплыми эмоциями.</div></div></section>
+    <section class="section"><div class="glass"><div class="eyebrow2">дата</div><h2 class="title2 script">27 июня 2026</h2><div class="calendar-grid" id="calendarGrid"></div></div></section>
+    <section class="card"><div class="glass location-card"><div class="eyebrow2">Церемония</div><h2 class="title2 script">ЗАГС</h2><div class="text2"><div style="font-size:34px;font-weight:600;letter-spacing:.03em" class="script">Дворец Торжественных Событий Николаевского Горисполкома</div><div style="margin-top:8px">Начало церемонии в 12:00</div><div style="margin-top:18px;display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:999px;border:1px solid rgba(0,0,0,.1);background:rgba(255,255,255,.82);font-size:14px;color:rgba(0,0,0,.62)">📍 вулиця Спаська, 44, Миколаїв</div><div><a class="btn" style="margin-top:18px;color:#111" href="https://www.google.com/maps/place/%D0%94%D0%B2%D0%BE%D1%80%D0%B5%D1%86+%D0%A2%D0%BE%D1%80%D0%B6%D0%B5%D1%81%D1%82%D0%B2%D0%B5%D0%BD%D0%BD%D1%8B%D1%85+%D0%A1%D0%BE%D0%B1%D1%8B%D1%82%D0%B8%D0%B9+%D0%9D%D0%B8%D0%BA%D0%BE%D0%BB%D0%B0%D0%B5%D0%B2%D1%81%D0%BA%D0%BE%D0%B3%D0%BE+%D0%93%D0%BE%D1%80%D0%B8%D1%81%D0%BF%D0%BE%D0%BB%D0%BA%D0%BE%D0%BC%D0%B0/@46.97352,31.9892177,17z/data=!3m1!4b1!4m6!3m5!1s0x40c5c9709ac14ef3:0xf74fbc1dc93ce25a!8m2!3d46.97352!4d31.991798!16s%2Fg%2F1tcyvy9l?entry=ttu&g_ep=EgoyMDI2MDMxMS4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noreferrer">открыть карту</a></div></div></div></section>
+ <section class="card"><div class="glass location-card"><div class="eyebrow2">банкет</div><h2 class="title2 script">Marseiles</h2><div class="text2"><div style="font-size:34px;font-weight:600;letter-spacing:.03em" class="script">Банкетный Зал "Marseiles"</div><div style="margin-top:8px">Начало банкета в 15:30</div><div style="margin-top:18px;display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:999px;border:1px solid rgba(0,0,0,.1);background:rgba(255,255,255,.82);font-size:14px;color:rgba(0,0,0,.62)">📍 вулиця Кругова, 28-б, Миколаїв</div><div><a class="btn" style="margin-top:18px;color:#111" href="https://www.google.com/maps/place/Kafe+Bar+%22Marseiles%22/@46.9442175,32.0427671,13.5z/data=!4m10!1m2!2m1!1z0LzQsNGA0YHQtdC70Ywg0L3QuNC60L7Qu9Cw0LXQsg!3m6!1s0x40c5cbadbc3eda79:0xf73a7d3be4f4ff28!8m2!3d46.9586883!4d32.0510003!15sCh_QvNCw0YDRgdC10LvRjCDQvdC40LrQvtC70LDQtdCyWiEiH9C80LDRgNGB0LXQu9GMINC90LjQutC-0LvQsNC10LKSAQNiYXKaASRDaGREU1VoTk1HOW5TMFZKUTBGblNVUTViamRtZUhCM1JSQULgAQD6AQQIABAt!16s%2Fg%2F11g8kq1fxr?entry=ttu&g_ep=EgoyMDI2MDMxMS4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noreferrer">открыть карту</a></div></div></div></section>
 
-  <main>
-    <!-- Hero -->
-    <section class="hero" id="top">
-      <div class="hero__bg" role="img" aria-label="Фон свадьбы"></div>
-      <div class="hero__veil"></div>
-
-      <div class="hero__content">
-        <div class="badge reveal">
-          <span>Свадьба</span>
-        </div>
-
-        <h1 class="title reveal">
-          Анна & Даниил
-        </h1>
-
-        <p class="subtitle reveal">
-          Будем счастливы разделить этот день с вами
-        </p>
-
-        <div class="date reveal">
-          <div class="date__big">27 июня 2026</div>
-          <div class="date__small">Суббота • 12:00</div>
-        </div>
-
-        <div class="hero__cta reveal">
-          <a class="btn" href="#rsvp">Подтвердить участие</a>
-          <a class="btn btn--ghost" href="#details">Смотреть детали</a>
-        </div>
-
-        <div class="countdown reveal" aria-label="Обратный отсчёт до свадьбы">
-          <div class="cd">
-            <div class="cd__num" id="d">—</div>
-            <div class="cd__lbl">дней</div>
-          </div>
-          <div class="cd">
-            <div class="cd__num" id="h">—</div>
-            <div class="cd__lbl">часов</div>
-          </div>
-          <div class="cd">
-            <div class="cd__num" id="m">—</div>
-            <div class="cd__lbl">мин</div>
-          </div>
-          <div class="cd">
-            <div class="cd__num" id="s">—</div>
-            <div class="cd__lbl">сек</div>
-          </div>
-        </div>
-
-        <div class="hero__hint">
-          <span class="mouse"></span>
-          <span class="hint">листай вниз</span>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- Details -->
-    <section class="section" id="details">
-      <div class="container">
-        <h2 class="h2 reveal">Детали</h2>
-        <div class="grid">
-          <article class="card reveal">
-            <h3>Когда</h3>
-            <p><strong>27 июня 2026</strong>, сбор гостей с <strong>12:00</strong>.</p>
-            <p>Церемония — 12:30, банкет — 14:00.</p>
-            <div class="card__actions">
-              <button class="btn btn--ghost" id="addToCalendar">Добавить в календарь</button>
-            </div>
-          </article>
-
-          <article class="card reveal">
-            <h3>Локация</h3>
-            <p><strong>Церемония “Центральный ЗАГС” Банкет “USHUAIA Миколаїв”</strong></p>
-            <p>ул. Варварівський узвіз, 5, м.Миколаїв</p>
-            <p class="muted">•Парковка есть</p>
-            <div class="pill-row">
-                          </div>
-          </article>
-
-          <article class="card reveal">
-            <h3>Пожелания</h3>
-            <p>Мы будем рады вашему хорошему настроению 💛</p>
-            <ul class="list">
-              <li>Если есть предпочтение в алкололе укажите в форме.</li>
-              <li>Если есть предпочтение в еде укажите в форме.</li>
-              <li>Если будет +1 человек — укажите в форме.</li>
-            </ul>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- Timeline -->
-    <section class="section section--alt" id="timeline">
-      <div class="container">
-        <h2 class="h2 reveal">Программа</h2>
-        <div class="timeline">
-          <div class="tl-item reveal">
-            <div class="tl-time">12:00</div>
-            <div class="tl-card">
-              <div class="tl-title">Сбор гостей (Центральный ЗАГС)</div>
-              <div class="tl-text">Игристое, знакомства, фотозона.</div>
-            </div>
-          </div>
-          <div class="tl-item reveal">
-            <div class="tl-time">12:30</div>
-            <div class="tl-card">
-              <div class="tl-title">Церемония</div>
-              <div class="tl-text">Самая важная часть дня ✨</div>
-            </div>
-          </div>
-          <div class="tl-item reveal">
-            <div class="tl-time">14:00</div>
-            <div class="tl-card">
-              <div class="tl-title">Банкет</div>
-              <div class="tl-text">Ужин, тосты, сюрпризы.</div>
-            </div>
-          </div>
-          <div class="tl-item reveal">
-            <div class="tl-time">18:00</div>
-            <div class="tl-card">
-              <div class="tl-title">Танцы</div>
-              <div class="tl-text">Диджей и любимые треки.</div>
-            </div>
-          </div>
-          <div class="tl-item reveal">
-            <div class="tl-time">21:00</div>
-            <div class="tl-card">
-              <div class="tl-title">Финал</div>
-              <div class="tl-text">Торт и красивое завершение вечера.</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Map -->
-   <section class="section" id="map">
-  <div class="container">
-    <h2 class="h2 reveal">Как добраться</h2>
-
-    <!-- ЛОКАЦИЯ 1: ДВОРЕЦ -->
-    <div class="mapcard reveal">
-      <div class="mapcard__info">
-        <h3>Центральный ЗАГС</h3>
-        <p>ул. Спасская, 44, Николаев (Миколаїв)</p>
-        <div class="mapcard__actions">
-          <a class="btn btn--ghost" target="_blank" rel="noreferrer"
-             href="https://www.google.com/maps?q=46.97352,31.991798">
-            Открыть в картах
-          </a>
-          <button class="btn" data-copy="ул. Спасская, 44, Николаев (Миколаїв)">
-            Скопировать адрес
-          </button>
-        </div>
-      </div>
-
-      <div class="mapcard__embed" aria-label="Карта Дворца Торжественных Событий">
-        <iframe
-          src="https://www.google.com/maps?output=embed&q=46.97352,31.991798&z=19"
-          width="100%"
-          height="100%"
-          style="border:0; min-height:260px;"
-          allowfullscreen
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade">
-        </iframe>
-      </div>
-    </div>
-
-    <div style="height:14px"></div>
-
-    <!-- ЛОКАЦИЯ 2: РЕСТОРАН -->
-    <div class="mapcard reveal">
-      <div class="mapcard__info">
-        <h3>Ресторан “USHUAIA”</h3>
-        <p>ул. Варварівський узвіз, 5, м. Миколаїв</p>
-        <div class="mapcard__actions">
-          <a class="btn btn--ghost" target="_blank" rel="noreferrer"
-             href="https://www.google.com/maps?q=46.9767443,31.9616935">
-            Открыть в картах
-          </a>
-          <button class="btn" data-copy="ул. Варварівський узвіз, 5, м. Миколаїв">
-            Скопировать адрес
-          </button>
-        </div>
-      </div>
-
-      <div class="mapcard__embed" aria-label="Карта ресторана USHUAIA">
-        <iframe
-          src="https://www.google.com/maps?output=embed&q=46.9767443,31.9616935&z=17"
-          width="100%"
-          height="100%"
-          style="border:0; min-height:260px;"
-          allowfullscreen
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade">
-        </iframe>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-
-    <!-- RSVP -->
-    <section class="section section--alt" id="rsvp">
-      <div class="container">
-        <h2 class="h2 reveal">Форма</h2>
-        <p class="lead reveal">Пожалуйста, ответьте до <strong>13 июня 2026</strong>.</p>
-
-        <form class="form reveal" id="rsvpForm" method="POST" action="https://formspree.io/f/xjgevlnz">
-  <input type="hidden" name="_subject" value="RSVP: новая анкета" />
-  <input type="hidden" name="_format" value="plain" />
-
-          <div class="form__row">
-            <label>
-              Имя и фамилия
-              <input required name="name" placeholder="Например, Иван Петров" />
-            </label>
-            <label>
-              Телефон / Telegram
-              <input name="contact" placeholder="+380 … или @username" />
-            </label>
-          </div>
-
-          <div class="form__row">
-            <label>
-              Вы будете?
-              <select required name="attend">
-                <option value="" selected disabled>Выберите</option>
-                <option value="yes">Да, с удовольствием!</option>
-                <option value="no">К сожалению, не смогу</option>
-              </select>
-            </label>
-            <label>
-              Кол-во гостей
-              <input type="number" min="1" max="4" value="1" name="guests" />
-            </label>
-          </div>
-
-          <label>
-            Пожелания по еде / аллергии / алкоголю
-            <textarea name="notes" rows="3" placeholder="Вегетарианство, аллергии и т.д."></textarea>
-          </label>
-
-          <div class="form__actions">
-            <button class="btn" type="submit">Отправить</button>
-                      </div>
-
-          <div class="toast" id="toast" role="status" aria-live="polite"></div>
-        </form>
-      </div>
-    </section>
-
-    <footer class="footer">
-      <div class="container footer__inner">
-        <div>С любовью, Анна & Даниил</div>
-        <a href="#top" class="to-top">Наверх ↑</a>
-      </div>
-    </footer>
+    <section class="section"><div class="glass"><div class="eyebrow2">тайминг дня</div><h2 class="title2 script">Программа</h2><div class="timeline"><div class="timeline-item"><div class="timeline-icon">♡</div><div><div class="timeline-time">12:00</div><div class="timeline-title script">Церемония в ЗАГСе</div></div></div><div class="timeline-item"><div class="timeline-icon">◌</div><div><div class="timeline-time">13:00</div><div class="timeline-title script">Фотосессия</div></div></div><div class="timeline-item"><div class="timeline-icon">✦</div><div><div class="timeline-time">15:30-22:00</div><div class="timeline-title script">Банкет</div></div></div></div></div></section>
+    <section class="section"><div class="glass"><div class="eyebrow2">важно</div><h2 class="title2 script">Детали</h2><div class="text2"><div>Просим вас поддержать атмосферу праздника элегантными светлыми оттенками в образах.</div></div></div></section>
+    <section class="card"><div class="count-wrap"><div class="count-box"><div class="eyebrow2">обратный отсчёт</div><h2 class="script" style="margin:0 0 22px;font-size:42px;color:rgba(0,0,0,.82)">Ждём вас через...</h2><div class="count-grid"><div class="count-item"><div class="count-value script" id="days">00</div><div class="count-label">Дни</div></div><div class="count-item"><div class="count-value script" id="hours">00</div><div class="count-label">Часы</div></div><div class="count-item"><div class="count-value script" id="minutes">00</div><div class="count-label">Мин</div></div><div class="count-item"><div class="count-value script" id="seconds">00</div><div class="count-label">Сек</div></div></div></div></div></section>
+    <section class="section"><div class="glass"><div class="eyebrow2">анкета гостя</div><h2 class="title2 script">RSVP</h2><form class="form reveal" id="rsvpForm" method="POST" action="https://formspree.io/f/xjgevlnz"><input type="hidden" name="_subject" value="Новая RSVP заявка со свадебного сайта">
+<input type="text" name="name" placeholder="Ваше имя" required><select name="attendance"><option value="yes">С радостью приду</option><option value="no">К сожалению, не смогу</option></select><select name="guests"><option value="1">1 гость</option><option value="2">2 гостя</option><option value="3">3 гостя</option><option value="4">4 гостя</option><option value="5">5 гостей</option></select><textarea name="note" placeholder="Пожелания или комментарий"></textarea><button class="btn btn-dark" type="submit" style="width:100%">отправить ответ</button></form><div class="thanks" id="thanksBox" hidden><div class="script" style="font-size:38px;color:rgba(0,0,0,.82)">Спасибо!</div><div style="margin-top:10px;color:rgba(0,0,0,.62)">Ваш ответ сохранён. Для реальной отправки можно подключить Formspree, Telegram Bot или email API.</div></div></div></section>
   </main>
-
- <script src="script.js"></script>
-<audio autoplay loop muted id="bgMusic">
-  <source src="music.mp3" type="audio/mpeg">
-</audio>
-
-<script>
-  document.addEventListener('click', () => {
-    const music = document.getElementById('bgMusic');
-    music.muted = false;
-    music.play();
-  }, { once: true });
-</script>
-
-
+  <footer>Luxury wedding invitation</footer>
+  <script>
+    const pearlsData = Array.from({length: 42}, (_, i) => ({left: ((i * 7.9) % 100).toFixed(2) + '%',top: (8 + ((i * 11.7) % 80)).toFixed(2) + '%',size: 8 + (i % 5) * 4,duration: 6 + (i % 4),delay: (i % 7) * .35}));
+    function renderPearls(container){pearlsData.forEach((p) => {const el = document.createElement('div');el.className = 'pearl';el.style.left = p.left;el.style.top = p.top;el.style.width = p.size + 'px';el.style.height = p.size + 'px';el.style.animationDuration = p.duration + 's';el.style.animationDelay = p.delay + 's';container.appendChild(el);});}
+    renderPearls(document.getElementById('pagePearls'));renderPearls(document.getElementById('envelopePearls'));
+    const openBtn = document.getElementById('openEnvelope');const envelopeScreen = document.getElementById('envelopeScreen');const music = document.getElementById('bgMusic');const musicToggle = document.getElementById('musicToggle');const musicNote = document.getElementById('musicNote');
+    async function playMusic(){try{await music.play();musicNote.textContent = 'Музыка включена';}catch(e){musicNote.textContent = 'Нажмите на кнопку музыки, если браузер заблокировал автозапуск';}}
+    openBtn.addEventListener('click', async () => {envelopeScreen.classList.add('hidden');await playMusic();});
+    musicToggle.addEventListener('click', async () => {if(music.paused){await playMusic();}else{music.pause();musicNote.textContent = 'Музыка выключена';}});
+    const calendarGrid = document.getElementById('calendarGrid');['ПН','ВТ','СР','ЧТ','ПТ','СБ','ВС'].forEach(d => {const el = document.createElement('div');el.textContent = d;calendarGrid.appendChild(el);});for(let day = 1; day <= 30; day++){const el = document.createElement('div');el.className = 'day' + (day === 27 ? ' active' : '');el.textContent = day;calendarGrid.appendChild(el);}
+    const targetDate = new Date('2026-06-27T12:00:00').getTime();function pad(n){ return String(n).padStart(2,'0'); }function updateCountdown(){const now = Date.now();const diff = Math.max(0, targetDate - now);const days = Math.floor(diff / (1000*60*60*24));const hours = Math.floor((diff / (1000*60*60)) % 24);const minutes = Math.floor((diff / (1000*60)) % 60);const seconds = Math.floor((diff / 1000) % 60);document.getElementById('days').textContent = days;document.getElementById('hours').textContent = pad(hours);document.getElementById('minutes').textContent = pad(minutes);document.getElementById('seconds').textContent = pad(seconds);}
+    updateCountdown();setInterval(updateCountdown, 1000);
+    
+  </script>
 </body>
 </html>
