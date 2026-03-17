@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Daniil & Anna — Wedding Invitation</title>
+  <title>Даниил и Анна — Свадебное приглашение</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -131,7 +131,7 @@
     <section class="card"><div class="count-wrap"><div class="count-box"><div class="eyebrow2">обратный отсчёт</div><h2 class="script" style="margin:0 0 22px;font-size:42px;color:rgba(0,0,0,.82)">Ждём вас через...</h2><div class="count-grid"><div class="count-item"><div class="count-value script" id="days">00</div><div class="count-label">Дни</div></div><div class="count-item"><div class="count-value script" id="hours">00</div><div class="count-label">Часы</div></div><div class="count-item"><div class="count-value script" id="minutes">00</div><div class="count-label">Мин</div></div><div class="count-item"><div class="count-value script" id="seconds">00</div><div class="count-label">Сек</div></div></div></div></div></section>
     <section class="section"><div class="glass"><div class="eyebrow2">анкета гостя</div><h2 class="title2 script">RSVP</h2><div style="text-align:center;margin-bottom:18px;color:rgba(0,0,0,.65);font-size:16px">Пожалуйста, ответьте на приглашение до <b>01.06.2026</b></div><form id="rsvpForm"><input type="text" name="name" placeholder="Ваше имя" required><select name="attendance"><option value="yes">С радостью приду</option><option value="no">К сожалению, не смогу</option></select><select name="guests"><option value="1">1 гость</option><option value="2">2 гостя</option><option value="3">3 гостя</option><option value="4">4 гостя</option><option value="5">5 гостя</option></select><textarea name="note" placeholder="Пожелания или комментарий"></textarea><button class="btn btn-dark" type="submit" style="width:100%">отправить ответ</button></form><div class="thanks" id="thanksBox" hidden><div class="script" style="font-size:38px;color:rgba(0,0,0,.82)">Спасибо!</div><div style="margin-top:10px;color:rgba(0,0,0,.62)">Ваш ответ сохранён. Для реальной отправки можно подключить Formspree, Telegram Bot или email API.</div></div></div></section>
   </main>
-  <footer>Luxury wedding invitation</footer>
+  <footer>Даниил и Анна — Свадебное приглашение</footer>
   <script>
     const pearlsData = Array.from({length: 42}, (_, i) => ({left: ((i * 7.9) % 100).toFixed(2) + '%',top: (8 + ((i * 11.7) % 80)).toFixed(2) + '%',size: 8 + (i % 5) * 4,duration: 6 + (i % 4),delay: (i % 7) * .35}));
     function renderPearls(container){pearlsData.forEach((p) => {const el = document.createElement('div');el.className = 'pearl';el.style.left = p.left;el.style.top = p.top;el.style.width = p.size + 'px';el.style.height = p.size + 'px';el.style.animationDuration = p.duration + 's';el.style.animationDelay = p.delay + 's';container.appendChild(el);});}
